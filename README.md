@@ -1,13 +1,12 @@
-nearStore
+NearNFT
 ==================
 
-The store built on Near protocol
+Mint new NFT on Near Blockchain
 
-Demo: https://1234-red-wasp-3dayp0qz.ws-us18.gitpod.io/
+Demo: https://ivory-cockroach-uco1opg7.ws-us17.gitpod.io/
 
-Gitpod: red-wasp-3dayp0qz.ws-us18.gitpod.io/
 
-Slide: https://github.com/nguyenhuuthangwkr/Near-Store/blob/main/docs/Near%20Store%20slide%20updated.ppt
+Slide: 
 
 Quick Start
 ===========
