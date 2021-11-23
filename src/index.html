@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/favicon.ico" />
     <link rel="apple-touch-icon" href="./assets/favicon.ico" />
-    <title>NEAR STORE</title>
+    <title>MINT NEAR NFT</title>
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,17 +17,13 @@
 
 <body>
     <main id="signed-out-flow" style="display: none">
-        <h1>Welcome to NEAR!</h1>
-        <p>
-            To make use of the NEAR blockchain, you need to sign in. The button below will sign you in using NEAR Wallet.
-        </p>
-        <p>
-            By default, when your app runs in "development" mode, it connects to a test network ("testnet") wallet. This works just like the main network ("mainnet") wallet, but the NEAR Tokens on testnet aren't convertible to other currencies – they're just for
-            testing!
-        </p>
-        <p>
-            Go ahead and click the button below to try it out:
-        </p>
+        <h1>Welcome to NEAR NFT!</h1>
+        <center>
+            <p>
+                Please sign in using NEAR Wallet.
+            </p>
+        </center>
+
         <p style="text-align: center; margin-top: 2.5em">
             <button id="sign-in-button">Sign in</button>
         </p>
@@ -35,7 +31,7 @@
 
     <div id="signed-in-flow" style="display: none">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="#">NEAR STORE</a>
+            <a class="navbar-brand" href="#">MINT NEAR NFT</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,19 +58,6 @@
 
     </div>
 
-    <div class="container pt-5">
-        <div class="row align-items-center justify-content-between">
-
-            <div class="col-md-3 order-md-0 mt-2 mt-md-0">
-                <select class="form-control form-control-sm">
-          <option value="">Sort By</option>
-          <option value="">Popylar</option>
-          <option value="">Name</option>
-        </select>
-            </div>
-
-        </div>
-    </div>
 
     <div class="container">
         <hr />
@@ -84,116 +67,48 @@
 
         <ul class="nav nav-pills" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="pill" href="#market">MARKET</a>
+                <a class="nav-link" data-toggle="pill" href="#mint-new-nft" id="add_new_nft">MINT NEW NFT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#my-products" id="fetch_my_products_list">MY PRODUCTS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#add-new-product" id="add_new_product">ADD NEW PRODUCT</a>
+                <a class="nav-link" data-toggle="pill" href="#my-nfts" id="fetch_my_nfts_list">MY NFT</a>
             </li>
 
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div id="market" class="container tab-pane active"><br>
-                <div class="row" id="products_list">
-
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <div class="d-flex justify-content-between position-absolute w-100">
-                                <div class="label-new">
-                                    <span class="text-white bg-success small d-flex align-items-center px-2 py-1">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <span class="ml-1">New</span>
-                                    </span>
-                                </div>
-                                <div class="label-sale">
-                                    <span class="text-white bg-primary small d-flex align-items-center px-2 py-1">
-                    <i class="fa fa-tag" aria-hidden="true"></i>
-                    <span class="ml-1">Sale</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <img src="https://picsum.photos/700/550" class="card-img-top" alt="Product">
-                            </a>
-                            <div class="card-body px-2 pb-2 pt-1">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <p class="h4 text-primary">$129,99</p>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="text-secondary lead" data-toggle="tooltip" data-placement="left" title="Compare">
-                                            <i class="fa fa-line-chart" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">
-                                    <strong>
-                    <a href="#" class="text-secondary">Product Title</a>
-                  </strong>
-                                </p>
-                                <p class="mb-1">
-                                    <small>
-                    <a href="#" class="text-secondary">Brands</a>
-                  </small>
-                                </p>
-                                <div class="d-flex mb-3 justify-content-between">
-                                    Product description
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="col px-0">
-                                        <button class="btn btn-outline-primary btn-block">
-                      BUY
-                      <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                    </button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div id="my-products" class="container tab-pane fade"><br>
-                <div class="row" id="my_products_list">
-                </div>
-            </div>
-            <div id="add-new-product" class="container tab-pane fade"><br>
-                <h3>Add your product:</h3>
+            <div id="mint-new-nft" class="container tab-pane fade"><br>
+                <h3>MINT NEW NFT:</h3>
                 <form action="#">
                     <div class="form-group">
-                        <label for="name">Product Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter product name" name="name">
+                        <label for="name">Receiver:</label>
+                        <input type="text" class="form-control" id="receiver" placeholder="Receiver" name="receiver">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pwd">Title:</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" name="title">
                     </div>
 
                     <div class="form-group">
                         <label for="pwd">Description:</label>
-                        <input type="text" class="form-control" id="description" placeholder="Product description" name="description">
+                        <input type="text" class="form-control" id="description" placeholder="Description" name="description">
                     </div>
 
                     <div class="form-group">
-                        <label for="pwd">Brand:</label>
-                        <input type="text" class="form-control" id="brand" placeholder="Product brand" name="brand">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pwd">Image (link):</label>
-                        <input type="text" class="form-control" id="image" placeholder="Product image" name="image">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pwd">Price:</label>
-                        <input type="text" class="form-control" id="price" placeholder="Product price" name="price">
+                        <label for="pwd">Media:</label>
+                        <input type="text" class="form-control" id="media" placeholder="Media url" name="media">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
                 </form>
             </div>
+
+            <div id="my-nfts" class="container tab-pane fade"><br>
+                <div class="row" id="my_nfts_list">
+                </div>
+            </div>
+
         </div>
 
     </div>
