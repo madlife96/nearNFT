@@ -142,30 +142,8 @@ $(document).ready(async function() {
         let token_id = $('p#transfer_nft_id').text();
         //token_id = parseInt(token_id);
 
-        let isSuccess = await window.contract.transferNFT({ receiver: receiver_id, tokenId: token_id });
-
-        if (isSuccess) {
-            //console.log("nft transfered!");
-            Swal.fire({
-                title: 'DONE!',
-                text: 'NFT TRANSFERED!',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
-        } else {
-            //alert("ERROR when transfering NFT! Please try again...");
-            Swal.fire({
-                title: 'ERROR!',
-                text: 'ERROR when transfering NFT! Please try again...!',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    location.reload();
-                }
-            });
-        }
-    })
+        await transferNFT(receiver_id, token_id);
+    });
 
     $('button#btn_test').click(async function() {
         let rs1 = await window.contract.getNFTOwner({ tokenId: '2' });
