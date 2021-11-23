@@ -65,6 +65,60 @@ async function fetchAccountBalance() {
     $('span#account_balance').text(balanceInNear);
 }
 
+async function mintNewNFT() {
+    let receiver = $('input#receiver').val();
+    let title = $('input#title').val();
+    let description = $('input#description').val();
+    let media = $('input#media').val();
+    let copies = $('input#copies').val();
+    //copies = parseInt(copies);
+
+    try {
+        let isSuccess = await window.contract.mintNewNFT({
+            receiver: receiver,
+            title: title,
+            description: description,
+            media: media
+        });
+
+        if (isSuccess) {
+            //console.log("new NFT minted");
+            Swal.fire({
+                title: 'DONE!',
+                text: 'New NFT Minted!',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            });
+        } else {
+            //alert("ERROR when minting NFT! Please try again...");
+            Swal.fire({
+                title: 'ERROR!',
+                text: 'ERROR when minting NFT Please try again...!',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            });
+        }
+    } catch (e) {
+        Swal.fire({
+            title: 'ERROR!',
+            text: 'ERROR: ' + e,
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
+        throw e
+    } finally {
+        //location.reload();
+    }
+}
+
 async function addProduct() {
     let name = $('input#name').val();
     let description = $('input#description').val();
@@ -244,8 +298,16 @@ $(document).ready(async function() {
     $('button#submit').click(async function(e) {
         e.preventDefault();
         $(this).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Confirming...').addClass('disabled');
-        await addProduct();
+        await mintNewNFT();
         $(this).text('Submit').removeClass('disabled');
+    });
+
+    $('button#btn_test').click(async function() {
+        let rs1 = await window.contract.getNFTOwner({ tokenId: '2' });
+        let rs2 = await window.contract.getNFTMetaData({ tokenId: '2' });
+        console.log(rs1);
+        console.log(rs2);
+        alert(rs1);
     });
 
     $('button.btn_buy').click(async function() {

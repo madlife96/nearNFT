@@ -13,22 +13,37 @@
  */
 
 import { Context, logging, storage } from 'near-sdk-as'
+import { Metadata, metadatas } from './metadata';
 import { Product, products} from './model';
+import { mint_to, get_token_owner, get_meta_data, grant_access,
+   check_access, transfer, transfer_from, revoke_access } from './nft';
 
 const INIT_ID = 0;
 
-export function addProduct(name: string, description: string, brand: string, image: string, price: i32):bool {
-  let product_owner = Context.sender;
-  let product_id = products.length + 1;
-  let product = new Product(product_id, product_owner, name, description, brand, image, price, false);
-  let index = products.push(product);
-  
-  if(index) {
+export function mintNewNFT(receiver: string, title: string, description: string, media: string): bool {
+  let owner = Context.sender;
+  let id = metadatas.length + 1;
+  let metadata = new Metadata(id, title, description, media);
+  let index = metadatas.push(metadata);
+
+  let minted_nft_id = mint_to(receiver, metadata);
+
+  let tokenOwner = get_token_owner(minted_nft_id);
+
+  if(tokenOwner == receiver) {
     return true;
   }
   else {
     return false;
   }
+}
+
+export function getNFTOwner(tokenId: u64): string {
+  return get_token_owner(tokenId);
+}
+
+export function getNFTMetaData(tokenId: u64): Metadata {
+  return get_meta_data(tokenId);
 }
 
 export function getProducts() : Product[] {
@@ -113,5 +128,3 @@ export function cancelSellProduct(_id: i32, _owner:string):bool {
   }
   return false;
 }
-
-

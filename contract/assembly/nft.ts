@@ -7,7 +7,6 @@ import { Metadata } from './metadata';
 
 type AccountId = string
 type TokenId = u64
-type MetadataId = u64
 
 // Note that MAX_SUPPLY is implemented here as a simple constant
 // It is exported only to facilitate unit testing
@@ -22,7 +21,8 @@ const tokenToOwner = new PersistentMap<TokenId, AccountId>('a')
 // complicates the code and costs more in storage rent.
 const escrowAccess = new PersistentMap<AccountId, AccountId>('b')
 
-const metadataToNFTId = new PersistentMap<MetadataId, TokenId>('c')
+//return the meta data from NFT's id
+const metadataOfNFT = new PersistentMap<TokenId, Metadata>('c')
 
 // This is a key in storage used to track the current minted supply
 const TOTAL_SUPPLY = 'c'
@@ -111,6 +111,11 @@ export function get_token_owner(token_id: TokenId): string {
   return tokenToOwner.getSome(token_id)
 }
 
+// Get meta data of the NFT token by given 'tokenId'
+export function get_meta_data(token_id: TokenId): Metadata {
+  return metadataOfNFT.getSome(token_id)
+}
+
 /********************/
 /* NON-SPEC METHODS */
 /********************/
@@ -133,7 +138,7 @@ export function mint_to(owner_id: AccountId, metadata: Metadata): u64 {
   tokenToOwner.set(tokenId, owner_id)
 
   // assign meta data to token ID
-  metadataToNFTId.set(metadata.id, tokenId)
+  metadataOfNFT.set(tokenId, metadata)
 
   // increment and store the next tokenId
   storage.set<u64>(TOTAL_SUPPLY, tokenId + 1)

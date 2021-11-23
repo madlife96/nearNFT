@@ -5,15 +5,16 @@ export class Metadata {
   title: string;
   description: string;
   media: string;
-  copies: i32;
 
-  constructor(id: i32, title: string, description: string, media: string, copies: i32) {
+  constructor(id: i32, title: string, description: string, media: string) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.media = media;
-    this.copies = copies;
   }
 
-}// An array that stores products on the blockchain
-//export const metadatas = new PersistentVector<Metadata>("mtds");
+}
+// An array that stores meta data on the blockchain
+export const metadatas = new PersistentVector<Metadata>("mtds");
+
+
