@@ -1,5 +1,6 @@
 import { PersistentMap, storage, context } from 'near-sdk-as'
-import { Metadata } from './metadata';
+import { Metadata, metadatas } from './metadata_model';
+import { NFT, nfts } from './nft_model'; 
 
 /**************************/
 /* DATA TYPES AND STORAGE */
@@ -82,6 +83,16 @@ export function transfer(new_owner_id: string, token_id: TokenId): void {
 
   // assign new owner to token
   tokenToOwner.set(token_id, new_owner_id)
+
+  for(let i = 0; i < nfts.length; i++) {
+    //let nft_owner = nfts[i].owner;
+    let id = nfts[i].id;
+    if(id == token_id) {
+      let metadata = get_meta_data(token_id);
+      let updated_nft = new NFT(token_id, new_owner_id, metadata);
+      nfts.replace(i, updated_nft);
+    }
+  }
 }
 
 
@@ -139,6 +150,11 @@ export function mint_to(owner_id: AccountId, metadata: Metadata): u64 {
 
   // assign meta data to token ID
   metadataOfNFT.set(tokenId, metadata)
+
+  //add new NFT to nfts
+  let new_nft = new NFT(tokenId, owner_id, metadata)
+
+  nfts.push(new_nft)
 
   // increment and store the next tokenId
   storage.set<u64>(TOTAL_SUPPLY, tokenId + 1)
