@@ -13,6 +13,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .btn-primary {
+            background-color: #121313;
+        }
+        
+        .btn-primary:hover {
+            background-color: #121313;
+        }
+        
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: #121313;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,18 +45,19 @@
 
     <div id="signed-in-flow" style="display: none">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="#">MINT NEAR NFT</a>
+            <a class="navbar-brand" href="#">MINT <image src="https://s3-us-west-1.amazonaws.com/compliance-ico-af-us-west-1/production/token_profiles/logos/original/9d5/c43/cc-/9d5c43cc-e232-4267-aa8a-8c654a55db2d-1608222929-b90bbe4696613e2faeb17d48ac3aa7ba6a83674a.png" width="30"></image> NFT</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <span data-behavior="account-id"></span>
+
                     </li>
                     <li class="nav-item">
-                        <p> ----> Balance: <span id="account_balance"></span>
-                            <image src="https://s3-us-west-1.amazonaws.com/compliance-ico-af-us-west-1/production/token_profiles/logos/original/9d5/c43/cc-/9d5c43cc-e232-4267-aa8a-8c654a55db2d-1608222929-b90bbe4696613e2faeb17d48ac3aa7ba6a83674a.png" width="30"></image>
+                        <p>
+
                         </p>
                     </li>
                 </ul>
@@ -60,6 +75,9 @@
 
 
     <div class="container">
+        <center>
+            <h2 data-behavior="account-id"></h2>
+        </center>
         <hr />
     </div>
 
@@ -100,15 +118,15 @@
                         <input type="text" class="form-control" id="media" placeholder="Media url" name="media">
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="pwd">Copies:</label>
                         <input type="text" class="form-control" id="media" placeholder="Copies" name="copies">
-                    </div>
+                    </div> -->
 
                     <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
                 </form>
 
-                <button class="btn btn-primary btn-block" id="btn_test">Test</button>
+                <!-- <button class="btn btn-primary btn-block" id="btn_test">Test</button> -->
             </div>
 
             <div id="my-nfts" class="container tab-pane fade"><br>

@@ -3,7 +3,15 @@ NearNFT
 
 Mint new NFT on Near Blockchain
 
+NFT contract (assemblyscript) base on nep4-basic - bare-minimum functionality:
+https://github.com/figment-networks/NFT/blob/master/contracts/assemblyscript/nep4-basic/main.ts
+
 Demo: https://ivory-cockroach-uco1opg7.ws-us17.gitpod.io/
+
+Main functions:
+1. Mint new NFT {id: u64, owner: string, metadata: {title: string, description: string, media: string}}
+2. View all NFTs of owner
+3. Transfer NFT to other owner
 
 
 Slide: 
